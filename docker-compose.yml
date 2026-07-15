@@ -1,0 +1,14 @@
+services:
+  honeypot:
+    build: .
+    container_name: honeypot
+    restart: unless-stopped
+    ports:
+      - "2222:2222"   # fake ssh
+      - "2323:2323"   # fake telnet
+      - "2121:2121"   # fake ftp
+      - "8080:8080"   # fake http
+      - "3307:3307"   # fake mysql
+    volumes:
+      - ./logs:/app/src/logs
+      - ./config:/app/config:ro
