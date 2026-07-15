@@ -1,0 +1,16 @@
+# Logs (contain captured attacker data - don't commit)
+logs/*.log
+logs/*.jsonl
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
