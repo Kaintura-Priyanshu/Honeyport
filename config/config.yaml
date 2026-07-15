@@ -1,0 +1,42 @@
+# Honeypot configuration
+# Add or remove services/ports as needed. Ports < 1024 need root/CAP_NET_BIND_SERVICE.
+
+services:
+  - name: ssh
+    port: 2222
+    banner: "SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.4"
+    type: ssh
+
+  - name: telnet
+    port: 2323
+    banner: "Ubuntu 20.04 LTS"
+    type: telnet
+
+  - name: ftp
+    port: 2121
+    banner: "220 (vsFTPd 3.0.3)"
+    type: ftp
+
+  - name: http
+    port: 8080
+    banner: "Apache/2.4.41 (Ubuntu)"
+    type: http
+
+  - name: mysql
+    port: 3307
+    banner: "5.7.33-0ubuntu0.18.04.1"
+    type: generic
+
+logging:
+  log_dir: "logs"
+  log_file: "honeypot.log"
+  json_log_file: "honeypot_events.jsonl"
+  console_output: true
+
+alerting:
+  enabled: false
+  # Webhook URL for real-time alerts (e.g. Slack/Discord incoming webhook)
+  webhook_url: ""
+  # Only alert if more than this many attempts from a single IP within alert_window_seconds
+  attempt_threshold: 5
+  alert_window_seconds: 60
